@@ -1,4 +1,4 @@
-function [x,y,scatter_num]=scattering_relaxation_time(angle_init, dt, relax_time)
+function [x,y,scatter_num]=scattering_relaxation_time(size, angle_init, dt, relax_time, init_x, init_y)
 % this function is for simulating the electron in graphene which behiave like the massless particles.
 % the considered factors are 
 %   1. the electric field is on.
@@ -12,18 +12,16 @@ function [x,y,scatter_num]=scattering_relaxation_time(angle_init, dt, relax_time
 xmax = 360;
 c = 1;
 esp = 10;
-size = 1000;
 x = ones(size,1);
 y = ones(size,1);
-x = x(:,1); y = y(:,1);
 
 % scattering_interval=rand*dense;
 % scattering_height = (-1)*scattering_interval;
 
 t = 0;          % a variable for counting relaxation time
 time = 0;       % a variable for real time
-hitpointx = 0;
-hitpointy = 0;
+hitpointx = init_x;
+hitpointy = init_y;
 scatter_num = 0;
 
 for i = 1:size
@@ -54,4 +52,4 @@ for i = 1:size
     
 end
 
-scatter(x,y);
+%scatter(x,y);
